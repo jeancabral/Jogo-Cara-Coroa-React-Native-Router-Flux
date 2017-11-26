@@ -3,27 +3,37 @@ import {
   Platform,
   StyleSheet,
   Image,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 const logo = require('../imgs/logo.png');
 const btnJogar = require('../imgs/botao_jogar.png');
 const btnSobreJogo = require('../imgs/sobre_jogo.png');
 const btnOutrosJogos = require('../imgs/outros_jogos.png');
 
-export default class Principal extends Component<{}> {
+export default class Principal extends Component {
   render() {
     return (
       <View style={styles.cenaPrincipal}>
 
         <View style={styles.apresentacaoJogo}>
-          <Image source={logo} />
-          <Image source={btnJogar} />
+            <Image source={logo} />
+            <Image source={btnJogar} />
         </View>
 
         <View style={styles.rodape}>
-          <Image source={btnSobreJogo} />
-          <Image source={btnOutrosJogos} />
+          <TouchableHighlight onPress={() => {
+            Actions.sobrejogo()
+          }}>
+            <Image source={btnSobreJogo} />
+          </TouchableHighlight>
+          <TouchableHighlight onPress={() => {
+            Actions.outrosjogos()
+          }}>
+            <Image source={btnOutrosJogos} />
+          </TouchableHighlight>
         </View>
 
       </View>
